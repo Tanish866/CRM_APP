@@ -4,8 +4,8 @@ function App() {
 
   return (
     <>
-      <h1 className="text-4xl font-bold text-red-500">
-        Tailwind Test
+      <h1 className="text-4xl font-bold text-white-500">
+        Hello World!
       </h1>
     </>
   )
