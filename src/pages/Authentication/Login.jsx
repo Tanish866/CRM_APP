@@ -17,13 +17,13 @@ function Login(){
                         <div>USER ID</div>
                     </div>
                     <div className="w-full">
-                        <input type="text" placeholder="Enter the user id " className="input input-primary" />
+                        <input type="text" placeholder="Enter user id " className="input input-primary" />
                     </div>
                     <div className="w-full">
                         <div>PASSWORD</div>
                     </div>
                     <div className="w-full">
-                        <input type="password" placeholder="Enter the password" className="input input-primary" />
+                        <input type="password" placeholder="Enter password" className="input input-primary" />
                     </div>
                     <div className="w-full">
                         <button className="btn btn-warning  font-bold text-lg w-full mt-8">Submit</button>

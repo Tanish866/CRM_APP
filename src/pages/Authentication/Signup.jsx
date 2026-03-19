@@ -17,19 +17,19 @@ function Signup(){
                         <div>USER ID</div>
                     </div>
                     <div className="w-full">
-                        <input type="text" placeholder="Enter the user id " className="input input-primary" />
+                        <input type="text" placeholder="Enter user id " className="input input-primary" />
                     </div>
                     <div className="w-full">
                         <div>EMAIL</div>
                     </div>
                     <div className="w-full">
-                        <input type="email" placeholder="Enter the email" className="input input-primary" />
+                        <input type="email" placeholder="Enter email" className="input input-primary" />
                     </div>
                     <div className="w-full">
                         <div>PASSWORD</div>
                     </div>
                     <div className="w-full">
-                        <input type="password" placeholder="Enter the password" className="input input-primary" />
+                        <input type="password" placeholder="Enter password" className="input input-primary" />
                     </div>
                     <div className="dropdown w-full">
                         <div tabIndex={0} role="button" className="btn m-1">USER TYPE</div>
