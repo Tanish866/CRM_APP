@@ -92,7 +92,6 @@ function Signup(){
                             />
                         </div>
                     </div>
-                    
                     <div className="w-full text-blue-200">
                         <div className="text-xs mb-1">EMAIL</div>
                         <div className="w-full">
