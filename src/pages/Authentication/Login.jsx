@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 import { login } from "../../Reducer/Slices/AuthSlice";
 
 function Login(){
 
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
 
     const [loginDetails, setLoginDetails] = useState({
         email: "",
@@ -20,13 +23,21 @@ function Login(){
         });
     }
 
+
+
     async function onSubmit(){
         if(!loginDetails.email || !loginDetails.password) return;
         console.log("Calling login");
         const response = await dispatch(login(loginDetails));
-        console.log("data", response);
+        if(response.payload) navigate("/");
+        else resetLoginDetails();
     }
-
+    function resetLoginDetails(){
+        setLoginDetails({
+            email: "",
+            password: ""
+        });
+    }
     return (
         <div className="flex justify-center items-center h-[90vh]">
             <div className="card bg-neutral text-neutral-content w-96">
@@ -41,35 +52,42 @@ function Login(){
                     <p className="text-sm text-slate-400 mt-1">Login in to your account</p>
                 </div>
                 <div className="card-body items-center text-start">
-                    <div className="w-full">
-                        <div>USER ID</div>
+                    <div className="w-full text-blue-200">
+                        <div className="text-xs mb-1">EMAIL</div>
+                        <div className="w-full">
+                            <input
+                                autoComplete="one-time-code"
+                                onChange={handleInputChange}
+                                name="email"
+                                value={loginDetails.email}
+                                type="email"
+                                placeholder="Enter email"
+                                className="input input-primary text-white"
+                            />
+                        </div>
                     </div>
-                    <div className="w-full">
-                        <input
-                            onChange={handleInputChange}
-                            name="email"
-                            value={loginDetails.email}
-                            type="email"
-                            placeholder="Enter user id "
-                            className="input input-primary"
-                        />
+                    
+                    <div className="w-full text-blue-200 mt-2">
+                        <div className="text-xs mb-1">PASSWORD</div>
+                        <div className="w-full">
+                            <input
+                                autoComplete="one-time-code"
+                                onChange={handleInputChange}
+                                name="password"
+                                value={loginDetails.password}
+                                type="password" 
+                                placeholder="Enter password" 
+                                className="input input-primary text-white" 
+                            />
+                        </div>
                     </div>
+                    
                     <div className="w-full">
-                        <div>PASSWORD</div>
+                        <button onClick={onSubmit} className="btn btn-secondary  font-bold text-lg w-full mt-6">Submit</button>
                     </div>
-                    <div className="w-full">
-                        <input 
-                            onChange={handleInputChange}
-                            name="password"
-                            value={loginDetails.password}
-                            type="password" 
-                            placeholder="Enter password" 
-                            className="input input-primary" 
-                        />
-                    </div>
-                    <div className="w-full">
-                        <button onClick={onSubmit} className="btn btn-warning  font-bold text-lg w-full mt-8">Submit</button>
-                    </div>
+                    <p className="text-white">
+                        Dont have an account? <Link className="text-blue-200" to={'/signup'}>Signup instead</Link>
+                    </p>
                 </div>
             </div>
         </div>
