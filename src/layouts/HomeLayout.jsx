@@ -1,6 +1,18 @@
 import { BsMenuButtonWide } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../Reducer/Slices/AuthSlice";
 
 function HomeLayout({ children }){
+
+    const authState = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    function onLogout(){
+        dispatch(logout());
+        navigate('/login');
+    }
+
     return(
         <div className="min-h-[90vh]">
             <div className="drawer">
@@ -22,8 +34,19 @@ function HomeLayout({ children }){
                         <li><a>Dashboard</a></li>
                         <li className="absolute bottom-8 w-3/4">
                             <div className="w-full flex justify-center items-center">
-                                <button className="btn btn-primary font-semibold">Login</button>
-                                <button className="btn btn-secondary font-semibold">Signup</button>
+                                {
+                                    !authState.isLoggedin ? (
+                                        <>
+                                            <Link to='/login' className="btn btn-primary font-semibold">Login</Link>
+                                            <Link to='/signup' className="btn btn-secondary font-semibold">Signup</Link>
+                                        </>
+                                    ):(
+                                        <>
+                                            <button onClick={onLogout} className="btn btn-primary font-semibold">Logout</button>
+                                            <Link className="btn btn-secondary font-semibold">Profile</Link>
+                                        </>
+                                    )
+                                }
                             </div>
                         </li>
                     </ul>
