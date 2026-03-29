@@ -2,6 +2,7 @@ import { BsMenuButtonWide } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../Reducer/Slices/AuthSlice";
+import { useEffect } from "react";
 
 function HomeLayout({ children }){
 
@@ -13,6 +14,10 @@ function HomeLayout({ children }){
         navigate('/login');
     }
 
+    useEffect(() =>{
+        if(!authState.isLoggedin) navigate('/login');
+    },[]);;
+    
     return(
         <div className="min-h-[90vh]">
             <div className="drawer">
