@@ -27,7 +27,7 @@ function Signup(){
     }
 
     async function onSubmit(){
-        console.log("calling singup");
+        console.log("calling singup", signupDetails);
         if(!signupDetails.email ||
            !signupDetails.password ||
            !signupDetails.name ||
@@ -39,7 +39,7 @@ function Signup(){
            }
         console.log("Calling login");
         const response = await dispatch(signup(signupDetails));
-        console.log(response.payload);
+        console.log(response);
         if(response.payload) navigate("/login");
         else resetSignupDetails();
     }

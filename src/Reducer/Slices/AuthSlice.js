@@ -22,9 +22,9 @@ export const login = createAsyncThunk('auth/signin', async(data) =>{
         console.log(error);
     }
 });
-export const signup = createAsyncThunk('auth/signup', async(data) =>{
+export const signup = createAsyncThunk('auth/signup', async(data, {rejectWithValue}) => {
     try {
-        const response =  axiosInstance.post('auth/signup', data);
+        const response = axiosInstance.post('auth/signup', data);
         toast.promise(response, {
             loading: "Submitting form",
             success: "Successfully signed up",
@@ -33,6 +33,7 @@ export const signup = createAsyncThunk('auth/signup', async(data) =>{
         return await response;
     } catch (error) {
         console.log(error);
+        return rejectWithValue(error.response?.data);
     }
 });
 
