@@ -31,9 +31,9 @@ const ticketSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getAllTicketForTheUser.fulfilled, (state, action) => {
             if(!action.payload) return;
-            state.ticketList = action?.payload?.data?.result;
+            state.ticketList = action?.payload?.data;
         })
     }
 });
 
-export default ticketSlice.Reducer;
+export default ticketSlice.reducer;
