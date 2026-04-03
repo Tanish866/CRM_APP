@@ -5,7 +5,6 @@ import { FaPencilAlt } from "react-icons/fa";
 import { TbProgressBolt } from "react-icons/tb";
 import { IoCheckmarkDone } from "react-icons/io5";
 import { MdPending, MdCancel } from "react-icons/md";
-
 import { useEffect } from "react";
 import { getAllTicketForTheUser } from "../../Reducer/Slices/ticketSlice";
 
@@ -13,7 +12,6 @@ function Home() {
 
     const authState = useSelector((state) => state.auth);
     const ticketState = useSelector((state) => state.tickets);
-
     const dispatch = useDispatch();
 
     async function loadticket() {
@@ -26,10 +24,10 @@ function Home() {
     }
 
     useEffect(() => {
-        if (authState?.token) {
+        if (authState?.token || localStorage.getItem("token")) {
             loadticket();
         }
-    }, [authState?.token]);
+    }, []);
 
     const totalTickets = ticketState?.ticketList?.length || 0;
 

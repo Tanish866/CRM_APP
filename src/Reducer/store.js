@@ -6,7 +6,7 @@ import ticketSliceReducer from "../Reducer/Slices/ticketSlice";
 const store = configureStore({
     reducer: {
         auth: authSliceReducer,
-        ticket: ticketSliceReducer
+        tickets: ticketSliceReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
     devTools: true

@@ -1,5 +1,5 @@
 
-function Cards({ children, footer="Open", status=50, ProgressBarColor="text-blue-400",  borderColor="border-t-blue-400", titleText = "Card", quantity = 50 }){
+function Cards({ children, status=50, ProgressBarColor="text-blue-400",  borderColor="border-t-blue-400", titleText = "Card", quantity = 50 }){
     return(
          <div className={`bg-[#161B22] border border-white/[0.08]
             border-t-[5px] ${borderColor} rounded-2xl
@@ -12,7 +12,7 @@ function Cards({ children, footer="Open", status=50, ProgressBarColor="text-blue
                         {quantity}
                     </div>
                     <div className={`radial-progress ${ProgressBarColor}`} style={{ "--value": status } /* as React.CSSProperties */ } aria-valuenow={60} role="progressbar">
-                        {status*100}%
+                        {Math.round(status *100)}%
                     </div>
                 </div>
                 <div className="flex gap-4 mt-3">
