@@ -2,3 +2,6 @@
  @plugin "daisyui" {
    themes: night --default;
  }
+html{
+    background-color: #080C14;
+}

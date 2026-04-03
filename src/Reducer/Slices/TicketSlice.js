@@ -4,7 +4,14 @@ import axiosInstance from "../../config/axiosInstance";
 import toast from "react-hot-toast";
 
 const initialState = {
-    ticketList: []
+    ticketList: [],
+    ticketDistribution: {
+        open: 0,
+        inProgress: 0,
+        resolved: 0,
+        onHold: 0,
+        cancelled: 0
+    }
 }
 
 export const getAllTicketForTheUser = createAsyncThunk('tickets/getAllTicketForTheUser', async() => {
@@ -24,6 +31,7 @@ export const getAllTicketForTheUser = createAsyncThunk('tickets/getAllTicketForT
         console.log(error);
     }
 });
+
 const ticketSlice = createSlice({
     name: 'tickets',
     initialState,
@@ -31,7 +39,18 @@ const ticketSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(getAllTicketForTheUser.fulfilled, (state, action) => {
             if(!action.payload) return;
-            state.ticketList = action?.payload?.data;
+            state.ticketList = action?.payload?.data?.result;
+            const tickets = action?.payload?.data?.result;
+            state.ticketDistribution = {
+                open: 0,
+                inProgress: 0,
+                resolved: 0,
+                onHold: 0,
+                cancelled: 0
+            };
+            tickets.forEach((ticket) =>{
+                state.ticketDistribution[ticket.status] = state.ticketDistribution[ticket.status] + 1;
+            });
         })
     }
 });
