@@ -50,9 +50,9 @@ function Drawer(){
                         </span>
                     </div>
                     
-                    <li><a className="flex gap-4 text-xl mr-2"><FaHome /> Home</a></li>
-                    <li><a className="flex gap-4 text-xl mr-2"><MdOutlineSpaceDashboard/>Dashboard</a></li>
-                    <li><a className="flex gap-4 text-xl mr-2"><LuTicketSlash/>View All Tickets</a></li>
+                    <li><Link to={'/'} className="flex gap-4 text-xl mr-2"><FaHome /> Home</Link></li>
+                    <li><Link to={'/dashboard'} className="flex gap-4 text-xl mr-2"><MdOutlineSpaceDashboard/>Dashboard</Link></li>
+                    <li><Link to={'/tickets'} className="flex gap-4 text-xl mr-2"><LuTicketSlash/>View All Tickets</Link></li>
                     <li className="absolute bottom-8 w-3/4">
                         <div className="w-full flex justify-center items-center">
                             {

@@ -1,7 +1,12 @@
 @import "tailwindcss";
- @plugin "daisyui" {
-   themes: night --default;
- }
+@plugin "daisyui" {
+  themes: night --default;
+}
+@layer components {
+.table-title {
+  @apply text-xl text-center flex flex-wrap justify-center items-center;
+}
+}
 html{
     background-color: #080C14;
 }

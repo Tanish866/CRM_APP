@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Drawer from "../Drawer/Drawer";
 
@@ -12,6 +12,10 @@ function Navbar() {
     "/tickets": "Tickets",
   }[location.pathname] ?? "CRM App";
 
+  function handleRefresh(){
+    window.location.reload();
+  }
+
   return (
     <div className="w-full h-[90px] bg-[#111827]
       border-b border-white/[0.07]
@@ -21,8 +25,8 @@ function Navbar() {
       {/* Left */}
       <div className="flex w-35 items-center gap-3">
         <Drawer/>
-        <h1 className="text-[25px] ml-15 font-semibold text-[#E6EDF3]">
-          {pageName}
+        <h1 className="text-[25px] cursor-pointer ml-15 font-semibold text-[#E6EDF3]">
+          <div onClick={handleRefresh} >{pageName}</div>
         </h1>
       </div>
 

@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 
 function HomeLayout({ children }){
