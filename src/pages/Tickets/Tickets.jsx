@@ -18,7 +18,7 @@ function Tickets(){
         pdf.addImage(imgData, "PNG", 0, 0, width, height);
         pdf.save("tickets.pdf");
     }
-    
+
     return (
         <HomeLayout>
             <div className="min-h-[90vh] ml-10 mr-40 cursor-pointer w-full flex flex-col justify-center items-center">

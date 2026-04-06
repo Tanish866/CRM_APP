@@ -1,7 +1,14 @@
+import { useNavigate } from "react-router-dom";
 
 function Cards({ children, status=50, ProgressBarColor="text-blue-400",  borderColor="border-t-blue-400", titleText = "Card", quantity = 50 }){
+
+    const navigate = useNavigate();
+    function onCardClick(){
+        navigate(`/tickets?status=${titleText}`);
+    }
+
     return(
-         <div className={`bg-[#161B22] border border-white/[0.08]
+         <div onClick={onCardClick} className={`bg-[#161B22] border border-white/[0.08]
             border-t-[5px] ${borderColor} rounded-2xl
             p-5 w-60 hover:scale-115 duration-300 ease-out flex flex-col cursor-pointer hover:scale-100 gap-2`}>
                 <div className="flex items-center justify-start gap-6 text-xl">
