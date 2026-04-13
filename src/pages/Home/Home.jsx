@@ -10,7 +10,7 @@ function Home() {
 
     const [ticketState] = UseTicket();
 
-    const totalTickets = ticketState?.ticketList?.length || 0;
+    const totalTickets = ticketState?.downloadTickets?.length || 0;
 
     return (
         <HomeLayout>
@@ -19,7 +19,7 @@ function Home() {
 
                     {/* Open */}
                     <Cards
-                        titleText="Open"
+                        titleText="open"
                         status={totalTickets ? (ticketState.ticketDistribution.open / totalTickets) : 0}
                         quantity={ticketState?.ticketDistribution?.open || 0}
                         ProgressBarColor="text-yellow-400"

@@ -4,10 +4,13 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas-pro";
 import { useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 
 function Tickets(){
     const [ticketState] = UseTicket();
     const targetRef = useRef(null);
+    const [searchParams] = useSearchParams();
+
 
     async function toPDF() {
         const canvas = await html2canvas(targetRef.current);
