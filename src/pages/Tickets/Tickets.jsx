@@ -6,11 +6,11 @@ import html2canvas from "html2canvas-pro";
 import { useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
+
 function Tickets(){
     const [ticketState] = UseTicket();
     const targetRef = useRef(null);
     const [searchParams] = useSearchParams();
-
 
     async function toPDF() {
         const canvas = await html2canvas(targetRef.current);
@@ -24,7 +24,7 @@ function Tickets(){
 
     return (
         <HomeLayout>
-            <div className="min-h-[90vh] ml-10 mr-40 cursor-pointer w-full flex flex-col justify-center items-center">
+            <div className="min-h-[90vh] ml-40 mr-40 flex flex-col">
                 <div className="text-center w-full bg-yellow-500 text-black hover:bg-yellow-400 py-5 font-bold text-3xl">
                     Ticket Records <MdOutlineFileDownload onClick={() => toPDF()} className="cursor-pointer inline" />
                 </div>
@@ -52,38 +52,37 @@ function Tickets(){
                             Status
                         </div>
                     </div>
-                    {ticketState && ticketState.ticketList.map((ticket) => {
-                        return(
-                            <div key={ticket._id} className="flex flex-col w-full">
-                                <div className="my-3 py-2 flex justify-between bg-gray-300 hover:bg-gray-100 text-black text-light px-2 items-center gap-3">
-                                    <div className='table-title basis-[8%] justify-start'>
-                                        {ticket._id.substring(0, 5) + "..."}
-                                    </div>
-                                    <div className='table-title basis-[12%]'>
-                                        {ticket.title}
-                                    </div>
-                                    <div className='table-title basis-[20%]'>
-                                        {ticket.description}
-                                    </div>
-                                    <div className='table-title basis-[20%]'>
-                                        {ticket.assignee}
-                                    </div>
-                                    <div className='table-title basis-[5%]'>
-                                        {ticket.ticketPriority}
-                                    </div>
-                                    <div className='table-title basis-[22%]'>
-                                        {ticket.assignedTo}
-                                    </div>
-                                    <div className='table-title basis-[13%] justify-end mr-4'>
-                                        {ticket.status}
-                                    </div>
+                    {ticketState && ticketState.ticketList.map((ticket) => (
+                        <div key={ticket._id} className="flex flex-col w-full">
+                            <div className="my-3 py-2 flex justify-between bg-gray-300 hover:bg-gray-100 text-black px-2 items-center gap-3">
+                                <div className='table-title basis-[8%] justify-start'>
+                                    {ticket._id.substring(0, 5) + "..."}
+                                </div>
+                                <div className='table-title basis-[12%]'>
+                                    {ticket.title}
+                                </div>
+                                <div className='table-title basis-[20%]'>
+                                    {ticket.description}
+                                </div>
+                                <div className='table-title basis-[20%]'>
+                                    {ticket.assignedTo}
+                                </div>
+                                <div className='table-title basis-[5%]'>
+                                    {ticket.ticketPriority}
+                                </div>
+                                <div className='table-title basis-[22%]'>
+                                    {ticket.assignedTo}
+                                </div>
+                                <div className='table-title basis-[13%] justify-end mr-4'>
+                                    {ticket.status}
                                 </div>
                             </div>
-                        )
-                    })}
+                        </div>
+                    ))}
                 </div>
             </div>
         </HomeLayout>
     );
 }
+
 export default Tickets;
